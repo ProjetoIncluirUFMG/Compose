@@ -1,18 +1,18 @@
 version: '2'
 services:
-  mysql:
-    build: ./mysql
+  database:
+    build: ./database
     environment:
       MYSQL_ROOT_PASSWORD: pass
     volumes:
       - db:/var/lib/mysql
-  php:
-    build: ./php
+  admin-app:
+    build: ../AdminApp
     ports:
-      - '80:80'
+      - '1337:80'
     volumes:
-      - ./html:/var/www/html
+      - ../AdminApp:/var/www/html
     depends_on:
-      - mysql
+      - database
 volumes:
   db:
