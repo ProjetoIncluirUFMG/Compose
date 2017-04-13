@@ -3,13 +3,19 @@ services:
   database:
     build: ./database
     environment:
-      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: projeto_incluir_pw
+      MYSQL_USER: projeto_incluir_user
+      MYSQL_PASSWORD: projeto_incluir_pw
+      MYSQL_DATABASE: projeto_incluir_db
     volumes:
       - db:/var/lib/mysql
+
   admin-app:
     build: ../AdminApp
     ports:
       - '1337:80'
+    links:
+      - database
     volumes:
       - ../AdminApp:/var/www/html
     depends_on:
