@@ -1,4 +1,4 @@
-Passo a passo:
+## Instalação localmente:
 
 ```bash
 > git clone https://github.com/ProjetoIncluirUFMG/Compose.git
