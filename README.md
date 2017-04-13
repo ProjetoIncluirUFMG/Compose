@@ -1,7 +1,9 @@
-How to use
+Passo a passo:
 
 ```bash
-git clone https://github.com/naga3/docker-lamp.git
-cd docker-lamp/
-docker-compose up -d
+> git clone https://github.com/ProjetoIncluirUFMG/Compose.git
+> cd Compose
+> ./setup.sh
+> docker-compose up -d
+> Acesse: https://localhost:1337
 ```
