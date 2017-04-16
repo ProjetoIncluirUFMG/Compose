@@ -11,6 +11,6 @@
 - Descomprima o arquivo dentro do diretorio ```Compose/database/backup.7zip```
 	- Somente envolvidos na equipe de TI tem acesso a senha para descomprimir esse arquivo
 
-- Execute o script ```Compose/setup.sh```
+- Execute o script setup.sh: ```cd Compose && ./setup.sh```
 
 - Acesse: https://localhost:1337
