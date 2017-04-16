@@ -13,4 +13,4 @@
 
 - Execute o script setup.sh: ```cd Compose && ./setup.sh```
 
-- Acesse: https://localhost:1337
+- Acesse: localhost:1337
