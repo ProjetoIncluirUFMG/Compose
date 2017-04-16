@@ -1,24 +1,21 @@
 version: '2'
 services:
-  database:
-    build: ./database
+  db:
+    image: mysql:5.7
+    ports:
+      - '3306:3306'
     environment:
-      MYSQL_ROOT_PASSWORD: projeto_incluir_pw
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: projeto_incluir_user
       MYSQL_PASSWORD: projeto_incluir_pw
       MYSQL_DATABASE: projeto_incluir_db
-    volumes:
-      - db:/var/lib/mysql
-
   admin-app:
     build: ../AdminApp
     ports:
       - '1337:80'
     links:
-      - database
+      - db
     volumes:
       - ../AdminApp:/var/www/html
     depends_on:
-      - database
-volumes:
-  db:
+      - db
