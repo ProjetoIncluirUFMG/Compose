@@ -13,6 +13,10 @@
 
 - Execute o script setup.sh: ```cd Compose && ./setup.sh```
 
+- Pronto! :)
+
+## Acesso:
+
 - Para acessar a plataforma de administrador: ```localhost:8001```
 
 - Para acessar a api da plataforma de cadastro: ```localhost:8002```
