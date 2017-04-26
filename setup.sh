@@ -3,12 +3,15 @@
 
 echo ">>> Setup em processo!"
 
-for app in AdminApp; do
+for app in AdminApp, CadastroAppAPI, CadastroAppFrontEnd; do
 		git clone "git@github.com:ProjetoIncluirUFMG/$app.git" "../$app"
 done
 
 docker-compose down
-docker-compose up -d
+
+/bin/bash ./database/install_dependencies.sh
+
+docker-compose up -d --build
 
 echo ">>> Recuperando banco de dados..."
 
