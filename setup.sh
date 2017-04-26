@@ -3,7 +3,7 @@
 
 echo ">>> Setup em processo!"
 
-for app in AdminApp, CadastroAppAPI, CadastroAppFrontEnd; do
+for app in AdminApp, CadastroAppAPI, CadastroAppFrontEnd, Documentacao; do
 		git clone "git@github.com:ProjetoIncluirUFMG/$app.git" "../$app"
 done
 
