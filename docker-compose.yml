@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
 
   cadastro-app-front-end:
@@ -6,7 +6,7 @@ services:
     ports:
       - '8003:8080'
     volumes:
-      - ../CadastroAppFrontEnd:/src
+      - ../CadastroAppFrontEnd:/usr/src/app
     depends_on:
       - cadastro-app-api
 
@@ -17,7 +17,7 @@ services:
     links:
       - db
     volumes:
-      - ../CadastroAppAPI:/src
+      - ../CadastroAppAPI:/usr/src/app
     depends_on:
       - db
 

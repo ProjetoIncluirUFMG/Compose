@@ -12,7 +12,7 @@ echo ">>> Destruindo containers existentes"
 docker-compose down
 
 echo ">>> Instalando dependencias para as aplicaçōes"
-/bin/bash ./database/install_dependencies.sh
+/bin/bash ./install_dependencies.sh
 
 echo ">>> Criando containers para as aplicaçōes"
 docker-compose up -d --build
