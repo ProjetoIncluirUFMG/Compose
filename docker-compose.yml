@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
 
   cadastro-app-front-end:
@@ -7,6 +7,8 @@ services:
       - '8003:8080'
     volumes:
       - ../CadastroAppFrontEnd:/usr/src/app
+    links:
+      - cadastro-app-api
     depends_on:
       - cadastro-app-api
 
