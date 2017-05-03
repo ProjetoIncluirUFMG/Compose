@@ -17,11 +17,11 @@
 
 ## Acesso:
 
-- Para acessar a plataforma de administrador: ```localhost:8001```
+- Para acessar a plataforma de administrador: ```local-admin.projetoincluir.com```
 
-- Para acessar a api da plataforma de cadastro: ```localhost:8002```
+- Para acessar a api da plataforma de cadastro: ```local-api.projetoincluir.com```
 
-- Para acessar o front-end da plataforma de cadastro: ```localhost:8003```
+- Para acessar o front-end da plataforma de cadastro: ```local-cadastro.projetoincluir.com```
 
 ## Outras instruções:
 

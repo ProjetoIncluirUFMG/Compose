@@ -4,12 +4,12 @@
 echo ">>> Setup em processo!"
 
 echo ">>> Clonando repositorios"
-for app in AdminApp CadastroAPI CadastroFrontEnd Documentacao; do
+for app in AdminApp API CadastroFrontEnd Documentacao; do
 		git clone "git@github.com:ProjetoIncluirUFMG/$app.git" "../$app"
 done
 
 echo ">>> Destruindo containers existentes"
-docker-compose down
+docker-compose down --rmi all
 
 echo ">>> Instalando dependencias para as aplicaçōes"
 /bin/bash ./install_dependencies.sh
@@ -22,3 +22,10 @@ sleep 30
 /bin/bash ./database/restore_backup.sh ./database/backup.sql
 
 echo ">>> Recuperação concluida!"
+
+echo ">>> Criar entradas no hosts file: /etc/hosts"
+cat <<END | sudo tee -a /etc/hosts
+127.0.0.1 local-api.projetoincluir.com local-cadastro.projetoincluir.com local-admin.projetoincluir.com
+END
+
+echo ">>> Setup completo!"
