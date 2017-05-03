@@ -12,6 +12,7 @@
 	- Somente envolvidos na equipe de TI tem acesso a senha para descomprimir esse arquivo
 
 - Execute o script setup.sh: ```cd Compose && ./setup.sh```
+	- Caso você já queira re-fazer o setup, execute: ```cd Compose && ./setup.sh reset```
 
 - Pronto! :)
 

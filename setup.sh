@@ -8,8 +8,10 @@ for app in AdminApp API CadastroFrontEnd Documentacao; do
 		git clone "git@github.com:ProjetoIncluirUFMG/$app.git" "../$app"
 done
 
-echo ">>> Destruindo containers existentes"
-docker-compose down --rmi all
+if [ "$1" == 'reset' ]; then 
+	echo ">>> Destruindo containers existentes"
+	docker-compose down --rmi all
+fi
 
 echo ">>> Instalando dependencias para as aplicaçōes"
 /bin/bash ./install_dependencies.sh
