@@ -1,25 +1,25 @@
 version: '3'
+
 services:
-
-  cadastro-app-front-end:
-    build: ../CadastroAppFrontEnd
+  cadastro-front-end:
+    build: ../CadastroFrontEnd
     ports:
-      - '8003:8080'
+      - '8003:8003'
     volumes:
-      - ../CadastroAppFrontEnd:/usr/src/app
+      - ../CadastroFrontEnd:/usr/src/app
     links:
-      - cadastro-app-api
+      - cadastro-api:cadastro-api
     depends_on:
-      - cadastro-app-api
+      - cadastro-api
 
-  cadastro-app-api:
-    build: ../CadastroAppAPI
+  cadastro-api:
+    build: ../CadastroAPI
     ports:
       - '8002:8080'
     links:
-      - db
+      - db:db
     volumes:
-      - ../CadastroAppAPI:/usr/src/app
+      - ../CadastroAPI:/usr/src/app
     depends_on:
       - db
 
@@ -28,11 +28,40 @@ services:
     ports:
       - '8001:80'
     links:
-      - db
+      - db:db
     volumes:
       - ../AdminApp:/var/www/html
     depends_on:
       - db
+
+  php-my-admin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - '8004:80'
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: projeto_incluir_user
+      PMA_PASSWORD: projeto_incluir_pw
+    links:
+      - db:db
+    depends_on:
+      - db
+
+  web:
+    image: nginx
+    links:
+      - cadastro-api
+    networks:
+     default:
+       aliases:
+         - local-api.projetoincluir.com
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    ports:
+     - "80:80"
+     - "443:443"
 
   db:
     image: mysql:5.7

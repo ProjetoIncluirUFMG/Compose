@@ -4,7 +4,7 @@
 echo ">>> Setup em processo!"
 
 echo ">>> Clonando repositorios"
-for app in AdminApp CadastroAppAPI CadastroAppFrontEnd Documentacao; do
+for app in AdminApp CadastroAPI CadastroFrontEnd Documentacao; do
 		git clone "git@github.com:ProjetoIncluirUFMG/$app.git" "../$app"
 done
 
