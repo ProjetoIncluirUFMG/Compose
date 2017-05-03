@@ -27,7 +27,7 @@ echo ">>> Recuperação concluida!"
 
 echo ">>> Criar entradas no hosts file: /etc/hosts"
 cat <<END | sudo tee -a /etc/hosts
-127.0.0.1 local-api.projetoincluir.com local-cadastro.projetoincluir.com local-admin.projetoincluir.com
+127.0.0.1 local-api.projetoincluir.com local-cadastro.projetoincluir.com local-admin.projetoincluir.com local-db.projetoincluir.com
 END
 
 echo ">>> Setup completo!"

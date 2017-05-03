@@ -24,6 +24,8 @@
 
 - Para acessar o front-end da plataforma de cadastro: ```local-cadastro.projetoincluir.com```
 
+- Para acessar o banco de dados (phpMyAdmin): ```local-db.projetoincluir.com```
+
 ## Outras instruções:
 
 - Para desligar os containers: ```docker-compose stop```

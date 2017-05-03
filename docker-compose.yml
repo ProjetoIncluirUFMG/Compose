@@ -34,6 +34,7 @@ services:
       - api
       - cadastro-front-end
       - admin-app
+      - php-my-admin
     depends_on:
       - api
 
