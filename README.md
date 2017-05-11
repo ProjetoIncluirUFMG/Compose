@@ -34,4 +34,6 @@
 
 - Para destruir os containers: ```docker-compose down```
 
+- Para recuperar a copia oficial do banco de dados: ```./restore_db.sh```
+
 - Para instalar novos pacotes da plataforma de cadastro: ```./install_dependencies```

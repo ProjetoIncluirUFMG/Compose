@@ -1,5 +1,5 @@
 #!/bin/bash
-# Projeto Incluir Setup
+# Projeto Incluir - Setup dos Projetos
 
 echo ">>> Setup em processo!"
 
