@@ -16,6 +16,9 @@ fi
 echo ">>> Instalando dependencias para as aplicaçōes"
 /bin/bash ./install_dependencies.sh
 
+echo ">>> Criando diretório para armazenar o banco de dados no host"
+mkdir ./database/mysql
+
 echo ">>> Criando containers para as aplicaçōes"
 docker-compose up -d --build
 
