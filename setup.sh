@@ -8,7 +8,7 @@ for app in AdminApp API CadastroFrontEnd Documentacao; do
 		git clone "git@github.com:ProjetoIncluirUFMG/$app.git" "../$app"
 done
 
-if [ "$1" == 'reset' ]; then 
+if [ "$1" == 'reset' ]; then
 	echo ">>> Destruindo containers existentes"
 	docker-compose down --rmi all
 fi
@@ -24,7 +24,7 @@ docker-compose up -d --build
 
 echo ">>> Recuperando banco de dados..."
 sleep 30
-/bin/bash ./database/restore_backup.sh ./database/backup.sql
+/bin/bash ./database/restore_backup.sh ./database/backup.sql ./database/db_migration.sql
 
 echo ">>> Recuperação concluida!"
 
