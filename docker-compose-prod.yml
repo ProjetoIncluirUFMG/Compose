@@ -1,4 +1,6 @@
 admin-app:
+  autoredeploy: true
+  sequential_deployment: true
   environment:
     - APPLICATION_ENV=production
     - DB_HOST=
@@ -10,6 +12,8 @@ admin-app:
   image: 'projetoincluiraws/admin-app:latest'
   restart: always
 api:
+  autoredeploy: true
+  sequential_deployment: true
   environment:
     - JWT_SEGREDO=
     - MYSQL_BANCO=
@@ -26,6 +30,8 @@ api:
   image: 'projetoincluiraws/api:latest'
   restart: always
 php-my-admin:
+  autoredeploy: true
+  sequential_deployment: true
   environment:
     - PMA_ARBITRARY=1
     - PMA_HOST=
@@ -35,6 +41,8 @@ php-my-admin:
   image: 'phpmyadmin/phpmyadmin:latest'
   restart: always
 proxy-reverso:
+  autoredeploy: true
+  sequential_deployment: true
   image: 'projetoincluiraws/proxyreverso:latest'
   links:
     - admin-app
