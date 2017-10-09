@@ -58,6 +58,12 @@ services:
 
   admin-app:
     build: ../AdminApp
+    environment:
+      APPLICATION_ENV: development
+      DB_HOST: db
+      DB_NAME: projeto_incluir_db
+      DB_PASSWORD: projeto_incluir_pw
+      DB_USERNAME: projeto_incluir_user
     ports:
       - '8001:80'
     volumes:

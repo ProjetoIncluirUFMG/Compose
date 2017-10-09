@@ -1,0 +1,37 @@
+admin:
+  environment:
+    - APPLICATION_ENV=production
+    - DB_HOST=
+    - DB_NAME=
+    - DB_PASSWORD=
+    - DB_USERNAME=
+  image: 'projetoincluiraws/admin-app:latest'
+  ports:
+    - '9090:80'
+  restart: always
+api:
+  environment:
+    - 'JWT_SEGREDO='
+    - MYSQL_BANCO=
+    - MYSQL_HOST=
+    - MYSQL_PORTA=
+    - MYSQL_SENHA=
+    - MYSQL_USUARIO=
+    - RESETAR_SENHA_EMAIL_REMETENTE=
+    - RESETAR_SENHA_SENHA_REMETENTE=
+    - RE_CAPTCHA_SECRET=
+    - 'RE_CAPTCHA_URL=https://www.google.com/recaptcha/api/siteverify'
+  image: 'projetoincluiraws/api:latest'
+  ports:
+    - '80:8002'
+  restart: always
+php-my-admin:
+  environment:
+    - PMA_ARBITRARY=1
+    - PMA_HOST=
+    - PMA_PORT=
+  image: 'phpmyadmin/phpmyadmin:latest'
+  ports:
+    - '8080:80'
+  restart: always
+
