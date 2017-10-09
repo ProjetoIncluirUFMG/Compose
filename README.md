@@ -37,3 +37,8 @@
 - Para recuperar a copia oficial do banco de dados: ```./restore_db.sh```
 
 - Para instalar novos pacotes da plataforma de cadastro: ```./install_dependencies```
+
+## Restore to banco de produção:
+
+- Substituir ```CREATE DEFINER=``` para ```CREATE DEFINER=CURRENT_USER```
+- ```mysql --host= --port=3306 --user= --password= --database=projeto_incluir < ~/projeto_incluir.sql```
