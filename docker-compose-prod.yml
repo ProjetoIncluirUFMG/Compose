@@ -1,37 +1,46 @@
-admin:
+admin-app:
   environment:
     - APPLICATION_ENV=production
     - DB_HOST=
     - DB_NAME=
     - DB_PASSWORD=
     - DB_USERNAME=
+  expose:
+    - '80'
   image: 'projetoincluiraws/admin-app:latest'
-  ports:
-    - '9090:80'
   restart: always
 api:
   environment:
-    - 'JWT_SEGREDO='
+    - JWT_SEGREDO=
     - MYSQL_BANCO=
     - MYSQL_HOST=
-    - MYSQL_PORTA=
+    - MYSQL_PORTA=3306
     - MYSQL_SENHA=
     - MYSQL_USUARIO=
     - RESETAR_SENHA_EMAIL_REMETENTE=
     - RESETAR_SENHA_SENHA_REMETENTE=
     - RE_CAPTCHA_SECRET=
     - 'RE_CAPTCHA_URL=https://www.google.com/recaptcha/api/siteverify'
+  expose:
+    - '8002'
   image: 'projetoincluiraws/api:latest'
-  ports:
-    - '80:8002'
   restart: always
 php-my-admin:
   environment:
     - PMA_ARBITRARY=1
     - PMA_HOST=
-    - PMA_PORT=
+    - PMA_PORT=3306
+  expose:
+    - '80'
   image: 'phpmyadmin/phpmyadmin:latest'
-  ports:
-    - '8080:80'
   restart: always
-
+proxy-reverso:
+  image: 'projetoincluiraws/proxyreverso:latest'
+  links:
+    - admin-app
+    - api
+    - php-my-admin
+  ports:
+    - '80:80'
+    - '443:443'
+  restart: always
