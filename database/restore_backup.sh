@@ -5,7 +5,7 @@
 # source backup.sql
 
 # Database copy
-mysql --host=127.0.0.1 --port=3306 --user=root --password=root --database=projeto_incluir_db < $1
+mysql --host=127.0.0.1 --port=3306 --user=root --database=projeto_incluir_db < $1
 
 # Data base migrations
-mysql --host=127.0.0.1 --port=3306 --user=root --password=root --database=projeto_incluir_db < $2
+mysql --host=127.0.0.1 --port=3306 --user=root --database=projeto_incluir_db < $2

@@ -11,6 +11,7 @@ done
 if [ "$1" == 'reset' ]; then
 	echo ">>> Destruindo containers existentes"
 	docker-compose down --rmi all
+  rm -rf ./database/mysql
 fi
 
 echo ">>> Instalando dependencias para as aplicaçōes"
