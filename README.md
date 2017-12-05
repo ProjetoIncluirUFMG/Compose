@@ -38,6 +38,10 @@
 
 - Para instalar novos pacotes da plataforma de cadastro: ```./install_dependencies```
 
+## SSH Docker Cloud
+
+- https://docs.docker.com/docker-cloud/infrastructure/ssh-into-a-node/
+
 ## Restore to banco de produção:
 
 - Substituir ```CREATE DEFINER=``` para ```CREATE DEFINER=CURRENT_USER```
