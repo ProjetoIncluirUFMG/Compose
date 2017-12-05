@@ -17,14 +17,20 @@ CREATE TABLE configuracao_cadastro (
   id int(1) NOT NULL,
   texto_inicial text NOT NULL,
   somente_veterano tinyint(1) NOT NULL,
-  sistema_ativo tinyint(1) NOT NULL
+  sistema_ativo tinyint(1) NOT NULL,
+  texto_pagina_fila_espera text NOT NULL,
+  texto_pagina_fila_nivelamento text NOT NULL,
+  texto_pagina_vaga_disponivel text NOT NULL,
+  texto_popup_fila_espera text NOT NULL,
+  texto_popup_fila_nivelamento text NOT NULL,
+  texto_popup_vaga_disponivel text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE configuracao_cadastro
   ADD PRIMARY KEY (`id`);
 
-INSERT INTO configuracao_cadastro (`id`, `texto_inicial`, `somente_veterano`, `sistema_ativo`) VALUES ('1', 'Texto inicial', '1', '1');
+INSERT INTO configuracao_cadastro (`id`, `texto_inicial`, `texto_pagina_fila_espera`, `texto_pagina_fila_nivelamento`, `texto_pagina_vaga_disponivel`, `texto_popup_fila_espera`, `texto_popup_fila_nivelamento`, `texto_popup_vaga_disponivel`, `somente_veterano`, `sistema_ativo`) VALUES ('1', 'Texto inicial', 'Texto página fila de espera', 'Texto página fila de nivelamento', 'Texto página vaga disponivel', 'Texto popup fila de espera', 'Texto popup fila de nivelamento', 'Texto popup vaga dispoivel', '1', '1');
 
-CREATE TABLE pre_matricula ( `numero_comprovante` INT(10) NOT NULL , `turno` TEXT(100) NOT NULL , `status` VARCHAR(45) NOT NULL DEFAULT 'Ativo' , `data_modificado` DATETIME NOT NULL, `aluno_cpf` VARCHAR(15) NOT NULL , `nome_curso` VARCHAR(45) NOT NULL , `id_curso` INT(11) NOT NULL , `nome_disciplina` VARCHAR(100) NOT NULL , `id_disciplina` INT(11) NOT NULL , `nome_turma` VARCHAR(100) NOT NULL , `id_turma` INT(11) NOT NULL , `veterano` BOOLEAN NOT NULL , `vaga_garantida` BOOLEAN NOT NULL , `fila_nivelamento` BOOLEAN NOT NULL , `fila_espera` BOOLEAN NOT NULL , `nome_aluno` VARCHAR(100) NOT NULL , `id_aluno` INT(11) NOT NULL , PRIMARY KEY (`numero_comprovante`)) ENGINE = InnoDB;
+CREATE TABLE pre_matricula ( `numero_comprovante` INT(10) NOT NULL , `turma` TEXT(100) NOT NULL , `status` VARCHAR(45) NOT NULL DEFAULT 'Ativo' , `data_modificado` DATETIME NOT NULL, `cpf_aluno` VARCHAR(15) NOT NULL , `nome_disciplina` VARCHAR(100) NOT NULL , `id_disciplina` INT(11) NOT NULL , `veterano` BOOLEAN NOT NULL , `vaga_garantida` BOOLEAN NOT NULL , `fila_de_nivelamento` BOOLEAN NOT NULL , `fila_de_espera` BOOLEAN NOT NULL , `nome_aluno` VARCHAR(100) NOT NULL , `id_aluno` INT(11) NOT NULL , PRIMARY KEY (`numero_comprovante`)) ENGINE = InnoDB;
 
-ALTER TABLE pre_matricula ADD CONSTRAINT `fk_disciplina` FOREIGN KEY (`id_disciplina`) REFERENCES `disciplina`(`id_disciplina`) ON DELETE NO ACTION ON UPDATE NO ACTION; ALTER TABLE `pre_matricula` ADD CONSTRAINT `fk_aluno` FOREIGN KEY (`id_aluno`) REFERENCES `aluno`(`id_aluno`) ON DELETE NO ACTION ON UPDATE NO ACTION; ALTER TABLE `pre_matricula` ADD CONSTRAINT `fk_curso` FOREIGN KEY (`id_curso`) REFERENCES `curso`(`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION; ALTER TABLE `pre_matricula` ADD CONSTRAINT `fk_turma` FOREIGN KEY (`id_turma`) REFERENCES `turma`(`id_turma`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE pre_matricula ADD CONSTRAINT `fk_disciplina` FOREIGN KEY (`id_disciplina`) REFERENCES `disciplina`(`id_disciplina`) ON DELETE NO ACTION ON UPDATE NO ACTION; ALTER TABLE `pre_matricula` ADD CONSTRAINT `fk_aluno` FOREIGN KEY (`id_aluno`) REFERENCES `aluno`(`id_aluno`) ON DELETE NO ACTION ON UPDATE NO ACTION;
