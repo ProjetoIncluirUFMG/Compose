@@ -26,6 +26,8 @@
 
 - Para acessar o banco de dados (phpMyAdmin): ```local-db.projetoincluir.com```
 
+- Para acessar o log dos serviços acima: ```docker-compose logs -f --tail 20 api cadastro-front-end admin-app```
+
 ## Outras instruções:
 
 - Para desligar os containers: ```docker-compose stop```
