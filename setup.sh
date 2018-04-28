@@ -5,7 +5,7 @@ echo ">>> Setup em processo!"
 
 echo ">>> Clonando repositorios"
 for app in AdminApp API CadastroFrontEnd Documentacao; do
-		git clone "git@github.com:ProjetoIncluirUFMG/$app.git" "../$app"
+		git clone "https://github.com/ProjetoIncluirUFMG/$app.git" "../$app"
 done
 
 if [ "$1" == 'reset' ]; then
