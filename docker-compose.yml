@@ -50,7 +50,7 @@ services:
     environment:
       PORT: 8003
     volumes:
-      - ../cadastro:/usr/src/app
+      - ./cadastro:/usr/src/app
     links:
       - api
     depends_on:
