@@ -16,8 +16,6 @@ mkdir ./database/mysql
 docker-compose up -d --build
 
 cd ./database
-sudo apt-get install p7zip -y
-7zr x backup.sql.7z
 
-# sleep 60
-# /bin/bash ./restore_backup.sh ./backup.sql ./db_migration.sql
+sleep 60
+/bin/bash ./restore_backup.sh ./schema.sql ./db_migration.sql
