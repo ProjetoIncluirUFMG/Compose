@@ -33,6 +33,7 @@ git clone "https://github.com/ProjetoIncluirUFMG/AdminApp.git" admin
 git clone "https://github.com/ProjetoIncluirUFMG/API.git" api
 git clone "https://github.com/ProjetoIncluirUFMG/CadastroFrontEnd.git" cadastro
 mkdir ./database/mysql
+cp .env.local cadastro/.env.local
 
 ./install_dependencies.sh
 docker-compose up -d --build
