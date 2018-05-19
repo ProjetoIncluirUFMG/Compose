@@ -15,13 +15,13 @@ services:
     restart: always
 
   api:
-    build: ../API
+    build: ./api
     ports:
       - '8002:8002'
     environment:
       PORT: 8002
     volumes:
-      - ../API:/usr/src/app
+      - ./api:/usr/src/app
     links:
       - db
     depends_on:
@@ -34,7 +34,6 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
     ports:
       - "80:80"
-      - "443:443"
     links:
       - api
       - cadastro-front-end
@@ -44,20 +43,20 @@ services:
       - api
 
   cadastro-front-end:
-    build: ../CadastroFrontEnd
+    build: ./cadastro
     ports:
       - '8003:8003'
     environment:
       PORT: 8003
     volumes:
-      - ../CadastroFrontEnd:/usr/src/app
+      - ../cadastro:/usr/src/app
     links:
       - api
     depends_on:
       - api
 
   admin-app:
-    build: ../AdminApp
+    build: ./admin
     environment:
       APPLICATION_ENV: development
       DB_HOST: db
@@ -67,7 +66,7 @@ services:
     ports:
       - '8001:80'
     volumes:
-      - ../AdminApp:/var/www/html
+      - ./admin:/var/www/html
     links:
       - db
     depends_on:

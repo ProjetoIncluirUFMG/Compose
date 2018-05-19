@@ -1,37 +1,23 @@
 #!/bin/bash
-# Projeto Incluir - Setup dos Projetos
 
-echo ">>> Setup em processo!"
+set -ex
 
-echo ">>> Clonando repositorios"
-for app in AdminApp API CadastroFrontEnd Documentacao; do
-		git clone "https://github.com/ProjetoIncluirUFMG/$app.git" "../$app"
-done
+mkdir dev.incluir && cd dev.incluir
+wget https://github.com/ProjetoIncluirUFMG/Compose/archive/google-deploy.zip
+unzip google-deploy.zip
+cp -R Compose-google-deploy/* ./ && rm -rf Compose-google-deploy/
 
-if [ "$1" == 'reset' ]; then
-	echo ">>> Destruindo containers existentes"
-	docker-compose down --rmi all
-  rm -rf ./database/mysql
-fi
-
-echo ">>> Instalando dependencias para as aplicaçōes"
-/bin/bash ./install_dependencies.sh
-
-echo ">>> Criando diretório para armazenar o banco de dados no host"
+git clone "https://github.com/ProjetoIncluirUFMG/AdminApp.git" admin
+git clone "https://github.com/ProjetoIncluirUFMG/API.git" api
+git clone "https://github.com/ProjetoIncluirUFMG/CadastroFrontEnd.git" cadastro
 mkdir ./database/mysql
 
-echo ">>> Criando containers para as aplicaçōes"
+./install_dependencies.sh
 docker-compose up -d --build
 
-echo ">>> Recuperando banco de dados..."
-sleep 30
-/bin/bash ./database/restore_backup.sh ./database/backup.sql ./database/db_migration.sql
+cd ./database
+sudo apt-get install p7zip -y
+7zr x backup.sql.7z
 
-echo ">>> Recuperação concluida!"
-
-echo ">>> Criar entradas no hosts file: /etc/hosts"
-cat <<END | sudo tee -a /etc/hosts
-127.0.0.1 local-api.projetoincluir.com local-cadastro.projetoincluir.com local-admin.projetoincluir.com local-db.projetoincluir.com
-END
-
-echo ">>> Setup completo!"
+# sleep 60
+# /bin/bash ./restore_backup.sh ./backup.sql ./db_migration.sql
