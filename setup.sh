@@ -8,7 +8,7 @@ apt-get install \
     ca-certificates \
     curl \
     software-properties-common \
-	unzip wget git curl -y
+	curl git mysql-client -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
@@ -21,8 +21,10 @@ curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compos
 chmod +x /usr/local/bin/docker-compose
 
 if [ -d "/var/compose" ]; then
+    cd /var/compose    
     docker-compose down --rmi all
     rm -rf /var/compose
+    cd /
 fi
 git clone -b google-deploy --single-branch https://github.com/ProjetoIncluirUFMG/Compose.git /var/compose
 cd /var/compose
